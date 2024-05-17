@@ -4,10 +4,13 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  system.debug: true  # Enable detailed logs
+
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '8.x'
+    versionSpec: '14.x'  # Consider using a more recent Node.js version
   displayName: 'Install Node.js'
 
 - script: |
@@ -26,4 +29,3 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts: drop'
-  
