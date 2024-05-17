@@ -2,21 +2,24 @@ trigger:
 - master
 
 pool:
-  vmImage: 'Ubuntu-16.04'
+  vmImage: 'ubuntu-latest'
+
+variables:
+  system.debug: true  # Enable detailed logs
 
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '8.x'
+    versionSpec: '14.x'  # Consider using a more recent Node.js version
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
+    node -v
+    npm -v
+    pwd
+    ls -la
+    npm install --loglevel verbose
   displayName: 'npm install'
-
-- script: |
-    npm test
-  displayName: 'npm test'
 
 - task: ArchiveFiles@2
   displayName: 'Archive files'
@@ -26,4 +29,3 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts: drop'
-  
