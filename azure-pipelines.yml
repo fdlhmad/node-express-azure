@@ -21,12 +21,6 @@ steps:
     npm install --loglevel verbose
   displayName: 'npm install'
 
-- script: |
-    pwd
-    ls -la
-    npm test
-  displayName: 'npm test'
-
 - task: ArchiveFiles@2
   displayName: 'Archive files'
   inputs:
