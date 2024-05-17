@@ -14,10 +14,16 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
+    node -v
+    npm -v
+    pwd
+    ls -la
+    npm install --loglevel verbose
   displayName: 'npm install'
 
 - script: |
+    pwd
+    ls -la
     npm test
   displayName: 'npm test'
 
